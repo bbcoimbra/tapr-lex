@@ -7,12 +7,17 @@ denominado de \AL.
 Desta forma, podemos considerar o processo de \AL{} equivalente ao
 processo de soletrar uma palavra. Verificamos caractere por caractere
 até podermos classificá-lo em uma categoria pré-definida, gerando uma
-\Mark {} (também conhecida como token).
+\Mark {} (também conhecida como lexema).
 
-As \Marks {} podem ser classificadas como faríamos em linguagem natural.
+As \Marks {} podem ser classificadas como faríamos numa linguagem natural.
 Em Português, por exemplo, para as \Marks, temos as classes Verbo, Substantivo,
-Artigo etc.
+Artigo etc. Em uma linguagem de programação temos os Identificadores
+(variáveis e constantes), Literais (números e sequências de
+caracteres) etc.
 
 O processo de \AL {} efetua outras operações além do reconhecimento das
 \Marks. Ele pode, por exemplo, pré-calcular o valor dos literais
 numéricos, reconhecendo a string ``3.14159'' como o número 3.14159.
+
+Antes de tratarmos do processo de \AL, daremos breves explicações
+sobre \ER e Autômatos Finitos a seguir.
