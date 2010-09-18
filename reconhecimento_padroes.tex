@@ -1,0 +1,43 @@
+\section{Reconhecimento de Padrões}
+Um analisador léxico utiliza basicamente dois métodos  para
+reconhecer os padrões de caracteres determinados por uma linguagem:
+Expressões Regulares e Autômatos Finitos.
+
+\subsection{Expressões Regulares}
+Expressões Regulares representam padrões de cadeias de caracteres. Uma
+expressão regular \emph{r} é definida pelo conjunto de cadeias de
+caracteres que ela casa.
+
+A esse conjunto denominamos \emph linguagem gerada pela expressão regular
+\cite{louden97-pt}.
+
+Precisamos diferenciar os caracteres que formam o padrão dos
+caracteres reconhecidos pelo padrão. Para isso usaremos a seguinte
+notação:
+
+\begin{itemize}
+	\item \emph{/abc/} para representar o padrão que deverá ser reconhecido;
+	\item \emph{``abc''}  para representar a cadeia de caracteres em que
+		o padrão será aplicado.
+	\end{itemize}
+
+Exemplos
+\begin{itemize}
+	\item a expressão regular /teste/ casa com a palavra \emph{teste} no texto ``Vamos fazer um
+		teste com Expressões Regulares?''
+\end{itemize}
+
+\subsubsection{Operações com Expressões Regulares}
+\begin{description}
+	\item[Escolha] se \emph{r} e \emph{s} são expressões regulares,
+		/r\textbar s/ representa a união da expressão regular \emph{r} e da
+		expressão regular \emph{s}. Como exemplo considere a expressão
+		regular /a\textbar b/. Essa expressão casa com os caracteres ``a''
+		ou ``b''.
+	\item[Concatenação] se \emph{r} e \emph{s} são expressões regulares,
+		/rs/ casa com qualquer expressão que case com \emph{r} seguida de
+		uma expressão que case com \emph{s}. Como exemplo, considere a
+		expressão regular /ab/. Essa expressão casa com a sequência de
+		caracteres ``ab''.
+	\item[Repetição] 
+\end{description}
