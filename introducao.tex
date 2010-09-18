@@ -4,6 +4,9 @@ fonte, que é basicamente uma sequência de caracteres, e agrupá-los
 em unidades significativas, chamadas \Marks. Este processo é
 denominado de \AL.
 
+O analisador léxico, portanto, é o programa responsável por reconhecer
+as cadeias de caracteres válidas para uma determinada linguagem.
+
 Desta forma, podemos considerar o processo de \AL{} equivalente ao
 processo de soletrar uma palavra. Verificamos caractere por caractere
 até podermos classificá-lo em uma categoria pré-definida, gerando uma
@@ -17,7 +20,8 @@ caracteres) etc.
 
 O processo de \AL {} efetua outras operações além do reconhecimento das
 \Marks. Ele pode, por exemplo, pré-calcular o valor dos literais
-numéricos, reconhecendo a string ``3.14159'' como o número 3.14159.
+numéricos, reconhecendo a cadeia de caracteres ``3.14159'' como o
+número 3.14159.
 
 Antes de tratarmos do processo de \AL, daremos breves explicações
 sobre \ER e Autômatos Finitos a seguir.
