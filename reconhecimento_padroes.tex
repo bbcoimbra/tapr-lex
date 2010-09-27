@@ -1,3 +1,7 @@
+%        File: reconhecimento_padroes.tex
+%     Created: Mon Sep 27 06:00 PM 2010 B
+% Last Change: Mon Sep 27 06:00 PM 2010 B
+%
 \section{Reconhecimento de Padrões}
 Um analisador léxico utiliza basicamente dois métodos  para
 reconhecer os padrões de caracteres determinados por uma linguagem:
@@ -86,11 +90,49 @@ meta-símbolos para alguns casamentos comuns:
 		da seguinte forma: /[a-z]/.
 	\item[Negação de intervalo] quando desejamos casar qualquer
 		caractere exceto os que estão numa lista utilizamos a seguinte
-		forma: /[^b-d]/, que casa com qualquer caractere único exceto ``b'',
+		forma: /[\^b-d]/, que casa com qualquer caractere único exceto ``b'',
 		``c'' e ``d''.
 \end{description}
 
-\subsection{Automatos Finitos}
+Embora sejam muito úteis no reconhecimento e casamento de padrões,
+Expressões Regulares não são soluções para todos os problemas. Tomemos
+como exemplo o seguinte trecho de código comentado em C:
+
+\begin{verbatim}
+/* Este é um comentário em Linguagem C */
+\end{verbatim}
+
+Este é um exemplo em que não é simples escrever uma expressão regular
+que case com o padrão.
+
+\subsection{Autômatos Finitos}
 Autômatos Finitos são uma forma matemática de escrever tipos
 particulares de algoritmos. Em particular, são utilizados para
 descrever o processo de reconhecimento de cadeias de caracteres.
+
+Um Autômato Finito ao receber uma entrada, partindo de um estado
+inicial, muda de estado conforme a função de transição definida.
+
+\subsubsection{Autômato Finito Deterministico}
+
+\begin{description}
+	\item[Definição] Um DFA (Autômato Finito Determinístico) $ M $ é
+		composto por um alfabeto $\Sigma$, um conjunto de estados
+		$S$, uma função de transição $T:SX\Sigma\leftarrow S $, um estado
+		inicial $S_0$, e um conjunto de estados de aceitação
+		$ A \subset S $. A linguagem aceita por $ M $, denotada como $
+		L(M) $, é definida como o conunto de cadeias de caracteres
+		$c_1 c_2 c_3 \cdots c_n$ no qual cada $c_i \in \Sigma $ é tal que
+		existem estados $ s_1 = T(s_0, c_1), s_2 = T(s_1, c_2), s_3 =
+		T(s_2, c_3), \cdots, s_n = T(s_{n-1}, c_n) $ em que cada $s_n$ é
+		um elemento de $A$ (ou seja, um estado de aceitação).
+\end{description}
+
+A esta definição podemos acrescentar, para efeito de clareza, que o
+estado seguinte de um DFA é univocamente determinado pelo estado
+corrente e pelo caractere corrente de entrada. Exemplos:
+
+% Inserir exemplo aqui.
+
+\subsubsection{Autômato Finito Não-Deterministico}
+
