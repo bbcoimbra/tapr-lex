@@ -8,7 +8,7 @@ Expressões Regulares representam padrões de cadeias de caracteres. Uma
 expressão regular \emph{r} é definida pelo conjunto de cadeias de
 caracteres que ela casa.
 
-A esse conjunto denominamos \emph linguagem gerada pela expressão regular
+A esse conjunto denominamos \emph{linguagem} gerada pela expressão regular
 \cite{louden97-pt}.
 
 Precisamos diferenciar os caracteres que formam o padrão dos
@@ -39,5 +39,10 @@ Exemplos
 		uma expressão que case com \emph{s}. Como exemplo, considere a
 		expressão regular /ab/. Essa expressão casa com a sequência de
 		caracteres ``ab''.
-	\item[Repetição] 
+	\item[Repetição] A operação de repetição de uma expressão regular,
+		às vezes denominada \emph{fecho de Kleene}, é denotada como
+		/r*/ onde \emph{r} é uma expressão regular. A expressão reguar
+		/r*/ casa com qualquer concatenação finita de cadeia de caracteres
+		desde que a cadeia case com \emph{r}. Como exemplo, a expressão
+		regular /a*/ casa com as cadeias ``'',``a'', ``aa'', ``aaa'' etc.
 \end{description}
