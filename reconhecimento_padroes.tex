@@ -45,4 +45,48 @@ Exemplos
 		/r*/ casa com qualquer concatenação finita de cadeia de caracteres
 		desde que a cadeia case com \emph{r}. Como exemplo, a expressão
 		regular /a*/ casa com as cadeias ``'',``a'', ``aa'', ``aaa'' etc.
+	\item[Precedência e uso de Parêntesis] Dada a expressão regular /a|b*/,
+		esta expressão deve ser interpretada como /(a|b)*/ ou /a|(b*)/? A
+		convenção padrão é que a repetição deveria ter maior precedência,
+		logo a segunda interpretação é a correta.
 \end{description}
+
+\subsubsection{Definição}
+Uma expressão regular é uma das seguintes:
+\begin{itemize}
+	\item Uma expressão básica;
+	\item Uma expressão na forma /r|s/ em que \emph{r} e \emph{s} são
+		expressões regulares;
+	\item Uma expressão na forma /rs/ em que \emph{r} e \emph{s} são
+		expressões regulares;
+	\item Uma expressão na forma /r*/ em que \emph{r} é uma expressão
+		regular;
+	\item  Uma expressão na forma /(r)/ que é equivalente a /r/ e
+		\emph{r} é uma expressão regular. Os parêntesis não alteram a
+		linguagem que casa com a ER, apenas ajusta a precedência dos
+		operadores.
+\end{itemize}
+
+\subsubsection{Expressões regulares extendidas}
+Para facilitar o uso de expressões regulares, foram adicionados alguns
+meta-símbolos para alguns casamentos comuns:
+
+\begin{description}
+	\item[Uma ou mais Repetições] o sinal \emph{+} é utilizado como
+		``atalho'' para a expressão regular /rr*/ em que desejamos casar
+		uma ou mais ocorrencias da expressão /r/, dessa forma, a expressão
+		ficaria /r+/;
+	\item[Qualquer caractere] para casar qualquer caractere em uma
+		expressão regular, utilizamos o caractere . (ponto). Por exemplo,
+		a expressão regular /a.c/ casa com as cadeias de caracteres
+		``abc'', ``adc'', ``aac'', ``acc'' etc.
+	\item[Intervalo de caracteres] essa extensão especifica uma forma
+		reduzida para escrevermos a expressão	/a|b|c|\ldots|x|y|z/.
+		Utilizando intervalos de caracteres escrevemos a expressão anterior
+		da seguinte forma: /[a-z]/.
+	\item[Negação de intervalo] quando desejamos casar qualquer
+		caractere exceto os que estão numa lista utilizamos a seguinte
+		forma: /[^b-d]/, que casa com qualquer caractere único exceto ``b'',
+		``c'' e ``d''.
+\end{description}
+
