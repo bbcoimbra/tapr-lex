@@ -1,0 +1,175 @@
+\documentclass[14pt]{beamer}
+\usepackage[latin1]{inputenc}
+\usetheme{Warsaw}
+\title{Analisadores Léxicos}
+\author{Bruno Coimbra \\ Diogo \\ Júlio}
+\institute{FATEC-SP}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Introdução}
+\begin{frame}
+	\frametitle{Introdução}
+	O processo inicial de compilar um programa consiste em ler um arquivo
+	fonte, que é basicamente uma sequência de caracteres, e agrupá-los
+	em unidades significativas, chamados \emph{tokens}. Este processo é
+	denominado de \emph{Análise Léxica}.
+\end{frame}
+\begin{frame}
+	\frametitle{Introdução}
+  Os tokens podem ser classificados em categorias como fariamos em uma
+	linguagem natural.
+	Na lingua portuguesa temos as categorias Artigo, Substantivo, Verbo,
+	Adjetivo, \ldots
+\end{frame}
+
+\begin{frame}
+	\frametitle{Introdução}
+	As categorias utilizada para classificar os tokens variam
+	conforme a linguagem que será reconhecida, mas normalmente temos
+	Identificadores e Constantes.
+\end{frame}
+\begin{frame}
+	\frametitle{Introdução}
+	A Análise Léxica consiste num processo parecido com o de soletrar
+	uma palavra:
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			& a & & : & = & & b & & * & & 2 & ; \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+\begin{frame}
+	\frametitle{Introdução}
+	O processo de Análise Léxica efetua outras operações além do
+	reconhecimento dos Tokens. Ele pode, por exemplo, pré-calcular o
+	valor dos literais 	numéricos, reconhecendo a cadeia de
+	caracteres ``42'' como o número 42.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Introdução}
+	O processo de Análise Léxica está embasado em duas teorias
+	principais:
+	\begin{itemize}
+		\pause \item Expressões Regulares
+		\pause \item  Autômatos Finitos
+	\end{itemize}
+\end{frame}
+
+\section{Expressões Regulares}
+\begin{frame}
+	\frametitle{Expressões Regulares}
+	Expressões Regulares representam padrões de cadeias de caraceres
+	(``strings'')
+\end{frame}
+
+\begin{frame}
+	\frametitle{Expressões Regulares}
+	Convenção:
+	\begin{description}
+		\item[/regex/] Será utilizado para representar a Expressão Regular
+		\item[``texto''] Será utilizado para representar o texto que
+			\emph{casa} com a Expressão Regular
+	\end{description}
+\end{frame}
+
+\subsection{Operações com Expressões Regulares}
+\begin{frame}
+	\frametitle{Operações com Expressões Regulares}
+	\large Expressão Regular Básica \vspace{0.5cm}
+	\\
+	\normalsize É aquela que casa com o próprio caractere que ela representa:
+	\[/a/ \approx "a" \]
+	\[/teste/ \approx "teste" \]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Operações com Expressões Regulares}
+	\large Escolha entre Expressões Regulares \vspace{0.5cm}\\
+	\normalsize Se $r$ e $s$ são expressões regulares, $/r|s/$ representa a
+	união da expressão regular $r$ e da expressão regular $s$.
+			\[ /a | b/ \approx "a" ou "b" \]
+\end{frame}
+\begin{frame}
+	\frametitle{Operações com Expressões Regulares}
+	\large Concatenação \vspace{0.5cm} \\
+	\normalsize	se $r$ e $s$ são expressões regulares,$/rs/$ casa com
+	  qualquer expressão que case com $r$ seguida de uma expressão que
+		case com $s$.
+		\[/ab/ \approx "ab" \]
+\end{frame}
+\begin{frame}
+	\frametitle{Operações com Expressões Regulares}
+	\large Repetição \vspace{0.5cm} \\
+	\normalsize Às vezes denominada \emph{fecho de Kleene}, é expressa como
+		$/r\!*/$ onde $r$ é uma expressão regular. A expressão reguar
+		$/r\!*/$ casa com qualquer concatenação finita de cadeia de caracteres
+		desde que a cadeia case com $r$.
+		\[/a\!*/ \approx "", "a", "aa", "aaa", \cdots\]
+\end{frame}
+\begin{frame}
+	\frametitle{Operações com Expressões Regulares}
+    \large Precedência e uso de Parêntesis \vspace{0.5cm} \\
+		\normalsize	Dada a expressão regular $/a|b\!*/$, esta expressão deve ser
+		interpretada como $/(a|b)*/$ ou $/a|(b*)/$?
+\end{frame}
+\subsection{Expressões Regulares Extendidas}
+\begin{frame}
+	\frametitle{Expressões Regulares Extendidas}
+	\large Uma ou mais Repetições \vspace{0.5cm} \\
+	\normalsize O sinal $+$ é utilizado como ``atalho'' para a expressão
+	  regular $/rr\!*/$ em que desejamos casar uma ou mais ocorrencias da
+		expressão $/r/$, dessa forma, a expressão ficaria $/r+/$;
+\end{frame}
+
+\begin{frame}
+	\frametitle{Expressões Regulares Extendidas}
+	\large Qualquer caractere \vspace{0.5cm} \\
+	\normalsize Para casar qualquer caractere em uma
+		expressão regular, utilizamos o caractere $.$ (ponto). Por exemplo,
+		a expressão regular $/a.c/$ casa com as cadeias de caracteres
+		``abc'', ``adc'', ``aac'', ``acc'' etc.
+
+\end{frame}
+\begin{frame}
+	\frametitle{Expressões Regulares Extendidas}
+	\large Intervalo de caracteres\vspace{0.5cm} \\
+	\normalsize Essa extensão especifica uma forma
+		reduzida para escrevermos a expressão	$/a|b|c|\cdots|x|y|z/$.
+		Utilizando intervalos de caracteres escrevemos a expressão anterior
+		da seguinte forma: $/[a-z]/$.
+\end{frame}
+\begin{frame}
+	\frametitle{Expressões Regulares Extendidas}
+	\large Negação de intervalo\vspace{0.5cm} \\
+	\normalsize Quando desejamos casar qualquer
+		caractere exceto os que estão numa lista utilizamos a seguinte
+		forma: $/[\land b-d]/$, que casa com qualquer caractere único exceto ``b'',
+		``c'' e ``d''.
+\end{frame}
+
+\section{Autômatos Finitos}
+\begin{frame}
+\frametitle{Autômatos Finitos}
+\end{frame}
+\subsection{Autômatos Finitos Deterministicos}
+\subsection{Autômatos Finitos Não-Deterministicos}
+
+\section{Implementação}
+\begin{frame}
+\frametitle{Implementação}
+\end{frame}
+
+\section{Geradores de Analisadores Léxicos}
+\begin{frame}
+\frametitle{Geradores de Analisadores Léxicos}
+\end{frame}
+
+
+\end{document}
