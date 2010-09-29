@@ -177,7 +177,42 @@
 
 \subsection{Implementação}
 \begin{frame}
-\frametitle{Implementação}
+	\frametitle{Implementação}
+	\footnotesize
+	\begin{columns}
+		\begin{column}[l]{6cm}
+			\hspace{0cm} estado = 1; \\
+			\hspace{0cm} enquanto estado ==  1, 2, 3 ou 4 faça \\
+			\hspace{0.2cm}  caso estado seja: \\
+			\hspace{0.4cm} 	1: caso char-de-entrada seja: \\
+			\hspace{0.6cm} 	``/'': avance entrada; \\
+			\hspace{1.0cm} 	estado = 2; \\
+			\hspace{0.6cm} 	senão  estado = \ldots /*erro*/; \\
+			\hspace{0.4cm} 	fim caso; \\
+			\hspace{0.4cm} 	2: caso char-de-entrada seja: \\
+			\hspace{0.6cm} 	``*'': avance entrada; \\
+			\hspace{1.0cm} 	estado = 3; \\
+			\hspace{0.6cm} 	senão  estado = \ldots /*erro*/; \\
+			\hspace{0.4cm} 	fim caso; \\
+		\end{column}
+		\begin{column}[r]{6cm}
+			\hspace{0.4cm} 3: caso char-de-entrada seja: \\
+			\hspace{0.6cm} ``*'': avance entrada; \\
+			\hspace{1.0cm} estado = 4; \\
+			\hspace{0.6cm} senão  avance entrada; \\
+			\hspace{0.4cm} fim caso; \\
+			\hspace{0.4cm} 4: caso char-de-entrada seja: \\
+			\hspace{0.6cm} ``/'': avance entrada; \\
+			\hspace{1.0cm} estado = 5; \\
+			\hspace{0.6cm} ``*'': avance entrada; \\
+			\hspace{0.6cm} senão  avance entrada; \\
+			\hspace{1.0cm} estado = 3; \\
+			\hspace{0.4cm} fim caso; \\
+			\hspace{0.2cm} fim enquanto; \\
+			\hspace{0.0cm} se estado == 5 então \\
+			\hspace{0.0cm} \emph{aceitação}; senão erro;
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Geradores de Analisadores Léxicos}
